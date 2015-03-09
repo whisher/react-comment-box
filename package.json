@@ -1,15 +1,15 @@
 {
   "author": "Fabio Bedini aka Whisher",
-  "name": "angular-expresso",
+  "name": "react-expresso",
   "email": "io@ilwebdifabio.it",
   "url": "http://ilwebdifabio.it",
   "version": "1.0.0",
-  "homepage": "https://github.com/whisher/angular-expresso",
+  "homepage": "https://github.com/whisher/react-expresso",
   "description": "just a run and up mean stack.",
-  "bugs": "https://github.com/whisher/angular-expresso/issues",
+  "bugs": "https://github.com/whisher/react-expresso/issues",
   "repository": {
     "type": "git",
-    "url": "git@github.com:whisher/angular-expresso.git"
+    "url": "git@github.com:whisher/react-expresso.git"
   },
   "scripts": {
     "start": "node server.js"
