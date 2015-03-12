@@ -18,7 +18,7 @@ var compression = require('compression'),
 
 
 
-module.exports = function(config, app, passport, db) {
+module.exports = function(config, app, db) {
   app.set('showStackError', true);
 
   // Prettify HTML
@@ -70,10 +70,6 @@ module.exports = function(config, app, passport, db) {
   }));
   app.use(methodOverride());
 
-  
-
- 
-
   // Express/Mongo session storage
   app.use(session({
     secret: config.sessionSecret,
@@ -87,14 +83,6 @@ module.exports = function(config, app, passport, db) {
     saveUninitialized: true
   }));
 
- 
-
-  // Use passport session
-  app.use(passport.initialize());
-  app.use(passport.session());
-
- 
-
   // Connect flash for flash messages
   app.use(flash());
 
@@ -104,6 +92,4 @@ module.exports = function(config, app, passport, db) {
   app.use(helmet.nosniff());
   app.use(helmet.ienoopen());
   app.use(helmet.hidePoweredBy());
-  
-
 };

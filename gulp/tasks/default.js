@@ -14,9 +14,9 @@ module.exports = gulp.task('default', function() {
     } else {
         runSequence(
                 'clean',
-                ['index', 'styles', 'fonts', 'assets', 'templates', 'hint'],
-                ['vendor','scripts'],
-                'watch'
+                ['index',  'fonts', 'assets'],
+                ['scss'],
+                ['scripts']
        );
     }
 }

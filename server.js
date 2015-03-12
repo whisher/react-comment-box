@@ -9,13 +9,11 @@ var fs = require('fs'),
 	app = express(),
 	favicon = require('serve-favicon'),
 	path = require('path'),
-	passport = require('passport'),
 	errorHandler = require('errorhandler'),
 	sio = require('socket.io'),
-	socketio_jwt = require('socketio-jwt'),
-	configs = require('./server/config/config'),
-	auth = require('./server/middlewares/auth'),
-	jwt = require('./server/middlewares/jwt')(configs);
+	configs = require('./server/config/config');
+	
+	
 
 // Bootstrap db connection
 var db = require('./server/config/db')(configs);
@@ -26,13 +24,7 @@ fs.readdirSync(modelsPath).forEach(function (file) {
 	require(modelsPath + '/' + file);
 });
 
-require(configs.serverPath+'/config/passport')(passport);
-
-// We are going to protect /api routes with JWT
-//app.use('/api', expressJwt({secret: configs.apiSecret}));
-
-
-require(configs.serverPath+'/config/express')(configs,app,passport,db);
+require(configs.serverPath+'/config/express')(configs,app,db);
 
  if (app.get('env') === 'development') {
  	app.disable('etag');
@@ -71,9 +63,8 @@ app.use('/api', router);
 
 // Routes
 require(configs.serverPath+'/routers/index')(app);
-require(configs.serverPath+'/routers/auth')(app, auth, configs, passport);
-require(configs.serverPath+'/routers/users')(app, auth);
-require(configs.serverPath+'/routers/articles')(app, auth, jwt);
+
+//require(configs.serverPath+'/routers/articles')(app, auth, jwt);
 
 
 
@@ -85,11 +76,7 @@ app.use(function(err, req, res, next) {
 	}
 	// Log it
 	console.error(err.stack);
-	//For /api
-	if (err.constructor.name === 'UnauthorizedError') {
-    		res.status(401).send('Unauthorized');
-  	}
-  	if (err.status === 405) {
+	if (err.status === 405) {
     		res.status(405).send('Method Not Allowed');
   	}
   	res.status(500).send('Internal Server Error');
@@ -112,12 +99,9 @@ if (app.get('env') === 'development') {
 var server = http.createServer(app);
 var io = sio(server);
 
-io.use(socketio_jwt.authorize({
-  secret: configs.apiSecret,
-  handshake: true
-}));
 
-io.on('connection', require(configs.serverPath+'/routers/socket')(io));
+
+//io.on('connection', require(configs.serverPath+'/routers/socket')(io));
 
 
 server.listen(app.get('port'), function () {

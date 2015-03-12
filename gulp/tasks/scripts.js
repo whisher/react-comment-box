@@ -1,15 +1,31 @@
 'use strict';
 
 var gulp = require('gulp');
-var concat = require('gulp-concat');
-var gulpif = require('gulp-if');
-var uglify = require('gulp-uglify');
-var ngAnnotate = require('gulp-ng-annotate');
+var browserify = require('browserify');
+var reactify = require('reactify');
+var source = require('vinyl-source-stream');
+var watchify = require('watchify');
 
-module.exports = gulp.task('scripts', function () {
-return gulp.src(config.paths.src.scripts)
-    .pipe(concat(config.filenames.scripts))
-    .pipe(ngAnnotate())
-    .pipe(gulpif(release,uglify())) 
-    .pipe(gulpif(release,gulp.dest(config.paths.dest.dist.scripts),gulp.dest(config.paths.dest.build.scripts)));
-});
+function scripts() {
+  var b = browserify({
+    entries: [config.paths.src.entryPoint],
+    transform: [reactify],
+    debug: true,
+    cache: {}, 
+    packageCache: {}, 
+    fullPaths: true
+  });
+  var watcher  = watchify(b);
+
+  return watcher.on('update', function () {
+    watcher.bundle()
+      .pipe(source(config.filenames.app))
+      .pipe(gulp.dest(config.paths.dest.build.js))
+      
+  })
+    .bundle()
+    .pipe(source(config.filenames.app))
+    .pipe(gulp.dest(config.paths.dest.build.js));
+}
+
+module.exports = gulp.task('scripts',scripts);

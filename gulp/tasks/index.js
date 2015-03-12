@@ -9,15 +9,10 @@ module.exports = gulp.task('index', function () {
   return gulp.src(config.paths.src.index)
     .pipe(gulpif(release, minifyHTML({comments: true, empty: true, spare: true, quotes: true})))
     .pipe(
-      replace('<!--styles-->', '<link rel="stylesheet" href="styles/' + config.filenames.styles + '">')
+      replace('<!--styles-->', '<link rel="stylesheet" href="css/' + config.filenames.styles + '">')
     )
     .pipe(
-      replace('<!--vendor-->', '<script src="scripts/' + config.filenames.vendor + '"></script>')
+      replace('<!--scripts-->', '<script src="js/' + config.filenames.app + '"></script>')
     )
-    .pipe(
-      replace('<!--scripts-->', '<script src="scripts/' + config.filenames.scripts + '"></script>')
-    )
-    .pipe(gulpif(release,
-    gulp.dest(config.paths.dest.dist.index),
-          gulp.dest(config.paths.dest.build.index)));
+    .pipe(gulpif(release,gulp.dest(config.paths.dest.dist.index),gulp.dest(config.paths.dest.build.index)));
 });

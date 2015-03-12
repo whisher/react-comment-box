@@ -1,19 +1,9 @@
 {
-  "name": "angular-expresso",
+  "name": "react-expresso",
   "version": "1.0.0",
   "dependencies": {
-    "angular": "~1.3.13",
-    "bootstrap-sass-official": "~3.3.1",
-    "angular-ui-router": "~0.2.11",
     "fontawesome": "~4.1.0",
-    "angular-bootstrap": "~0.12.0",
-    "angular-animate": "~1.3.13",
-    "animate-sass": "git://github.com/tgdev/animate-sass.git#master",
-    "ngstorage": "~0.3.0",
-    "angular-jwt": "~0.0.6",
-    "angular-socket-io": "~0.7.0"
+    "bootstrap-sass-official": "~3.3.3"
   },
-  "devDependencies": {
-    "angular-mocks": "~1.3.13"
-  }
+  "devDependencies": {}
 }
