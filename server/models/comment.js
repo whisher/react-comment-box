@@ -14,12 +14,12 @@ var CommentSchema = new Schema({
     type: Date,
     default: Date.now
   },
-  text: {
+  author: {
     type: String,
     required: true,
     trim: true
   },
-  author: {
+  text: {
     type: String,
     required: true,
     trim: true

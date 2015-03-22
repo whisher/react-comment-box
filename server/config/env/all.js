@@ -39,5 +39,4 @@ module.exports = {
     maxAge: null
   },
   sessionName: 'connect.sid',
-  niceErrorPage: true
 };

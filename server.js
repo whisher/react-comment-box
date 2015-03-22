@@ -13,6 +13,9 @@ var fs = require('fs'),
 	sio = require('socket.io'),
 	configs = require('./server/config/config');
 	
+// Manage server and socket
+var server = http.createServer(app);
+var io = sio(server);	
 	
 
 // Bootstrap db connection
@@ -35,39 +38,8 @@ app.set('port', process.env.PORT || 3000);
 app.use(favicon(path.join(configs.rootPath,configs.releasePath,'favicon.ico')));
 app.use(express.static( path.join(configs.rootPath, configs.releasePath)));
 
-/*
-var router = express.Router();
-
-router.use(function(req, res, next) {
-	res.header('Access-Control-Allow-Origin', '*');
-    	res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-    	res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
-            // intercept OPTIONS method
-	if ('OPTIONS' == req.method) {
-	      return res.sendStatus(200);
-	}
-   	next();
-});
-app.use('/api', router);
-*/
-
-//Cluster debug
-/*if (app.get('env') === 'development') {
-	app.use(function(req,res,next){
-		var cluster = require('cluster');
-		if(cluster.isWorker) {
-			console.log('Worker %d received request',cluster.worker.id);
-		}
-	});
-}*/
-
 // Routes
-require(configs.serverPath+'/routers/index')(app);
-
-//require(configs.serverPath+'/routers/articles')(app, auth, jwt);
-
-
-
+require(configs.serverPath+'/routers/comments')(app);
 
 app.use(function(err, req, res, next) {
 	// If the error object doesn't exists
@@ -86,9 +58,6 @@ app.use(function(err, req, res, next) {
 app.use(function(req, res) {
 	// Log it
 	console.error(req.url);
-	if(configs.niceErrorPage){
-		return res.status(404).render('404');
-	}
 	res.status(404).send('Not Found');
 });
 
@@ -96,13 +65,9 @@ if (app.get('env') === 'development') {
 	app.use(errorHandler());
 }
 
-var server = http.createServer(app);
-var io = sio(server);
 
 
-
-//io.on('connection', require(configs.serverPath+'/routers/socket')(io));
-
+io.on('connection', require(configs.serverPath+'/routers/socket')(io));
 
 server.listen(app.get('port'), function () {
 	console.log( 'Express started on http://localhost:' + 

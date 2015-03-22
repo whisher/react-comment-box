@@ -1,7 +1,32 @@
 .form-comment{}
+.comment-header{
+	min-height: $navbar-height;
+	background-color:#727272;
+	line-height:$navbar-height;
+	padding: 0 19px;
+	margin-bottom:20px;
+	color:#ffffff;
+}
+.comment-badge{
+	@extend .badge;
+	color: #ffff;
+ 	background-color: #03A9F4;	
+}
 .comment-list{}
 .comment{
-  @extend .well;
+	@extend .well;
+  	@extend .clearfix;
+}
+.comment-form-search{
+	margin-top:7px;
+}
+.comment-date{
+	width:100px;
+	float:right;
+	background-color:#0288D1;
+	color:#FFFFFF;
+	text-align:center;
+	padding: 3px 0;
 }
 .comment-author{}
 .comment-text{

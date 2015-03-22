@@ -3,9 +3,16 @@ var Comment = require('./Comment-react');
 
 var CommentList = React.createClass({
   render: function() {
-    var commentNodes = this.props.data.map(function (comment) {
+    var searchText = this.props.searchText;
+    var commentNodes = this.props.data.filter(function (comment) {
+      if(!searchText){
+        return true;
+      }
+      return comment.author.toLowerCase().indexOf(searchText) !== -1;
+    })
+    .map(function (comment) {
       return (
-        <Comment author={comment.author} text={comment.text} />
+        <Comment data={comment} key={comment._id}/>
        );
     });
     return (
