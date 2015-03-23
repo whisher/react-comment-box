@@ -1,5 +1,5 @@
 # React Real Time Comment Box
-Just my first attempt to build something with React.
+First attempt to build something with React.
 Useful for learning purpose, playground or just as easy starting point.
 
 ## Credits
