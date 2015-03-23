@@ -5,7 +5,7 @@
   "url": "http://ilwebdifabio.it",
   "version": "1.0.0",
   "homepage": "https://github.com/whisher/react-comment-box",
-  "description": "just a run and up mean stack.",
+  "description": "Just an easy starting point for react & browserify.",
   "bugs": "https://github.com/whisher/react-comment-box/issues",
   "repository": {
     "type": "git",
@@ -45,9 +45,7 @@
     "browserify": "^9.0.3",
     "del": "^1.1.1",
     "gulp": "^3.8.11",
-    "gulp-if": "^1.2.5",
     "gulp-livereload": "^3.8.0",
-    "gulp-minify-html": "^1.0.1",
     "gulp-rename": "^1.2.0",
     "gulp-replace": "^0.5.3",
     "gulp-ruby-sass": "^1.0.0-alpha.3",
@@ -57,10 +55,6 @@
     "reactify": "^1.0.0",
     "run-sequence": "^1.0.2",
     "vinyl-source-stream": "^1.1.0",
-    "watchify": "^2.4.0",
-    "yargs": "^3.5.3"
-  },
-  "engines": {
-    "node": ">=0.10.x"
+    "watchify": "^2.4.0"
   }
 }
