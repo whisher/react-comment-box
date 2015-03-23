@@ -1,15 +1,15 @@
 {
   "author": "Fabio Bedini aka Whisher",
-  "name": "react-expresso",
+  "name": "react-comment-box",
   "email": "io@ilwebdifabio.it",
   "url": "http://ilwebdifabio.it",
   "version": "1.0.0",
-  "homepage": "https://github.com/whisher/react-expresso",
+  "homepage": "https://github.com/whisher/react-comment-box",
   "description": "just a run and up mean stack.",
-  "bugs": "https://github.com/whisher/react-expresso/issues",
+  "bugs": "https://github.com/whisher/react-comment-box/issues",
   "repository": {
     "type": "git",
-    "url": "git@github.com:whisher/react-expresso.git"
+    "url": "git@github.com:whisher/react-comment-box.git"
   },
   "scripts": {
     "start": "node server.js"
@@ -29,15 +29,12 @@
     "express-logger": "0.0.3",
     "express-session": "^1.9.3",
     "express-validator": "^2.7.0",
-    "flux": "^2.0.1",
     "helmet": "^0.6.1",
-    "keymirror": "^0.1.1",
     "lodash": "^2.4.1",
     "method-override": "^2.3.0",
     "moment": "^2.9.0",
     "mongoose": "^3.8.21",
     "morgan": "^1.5.0",
-    "object-assign": "^2.0.0",
     "react": "^0.13.0",
     "serve-favicon": "^2.2.0",
     "socket.io": "^1.2.1",

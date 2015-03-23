@@ -1,35 +1,14 @@
-# Angular  expresso
-Angular expresso is a full-stack JavaScript open-source solution for an easy starting point for MongoDB, Node.js, Express, and AngularJS based applications.
+# React Real Time Comment Box
+Just my first attempt to build something with React.
+Good for learning purpose & playground
 
 ## Credits
-* [M.E.A.N Stack](https://github.com/linnovate/mean)
-* [MEAN.JS](https://github.com/meanjs/mean)
-* [ANIMATE SASS](https://daneden.me/animate)
+* [Angular expresso](https://github.com/whisher/angular-expresso)
 
-## Features
-* use sass
-* use JSON Web Tokens (auth0)
-* use a smart easy customizable animation
-* use not intrusive splash screen
-* use gulp
-* use socket
-* cors
-* different way to manage user session (sign in, register) modal or dedicate view
-* different way to manage error status 404 nice page or raw message
-* no view in server side
-* all the templates cached using gulp-angular-templatecache
-* no bower_components in the root
 
 ## Install
 * npm install
 * bower install
 * gulp
+* node server
 
-### Production/Heroku
-* npm install
-* bower install
-* gulp --release
-* heroku create
-* heroku addons:add mongolab
-* git push heroku master
-* heroku open
