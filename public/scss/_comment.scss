@@ -7,10 +7,25 @@
 	margin-bottom:20px;
 	color:#ffffff;
 }
+.comment-header-info{
+	@extend .pull-left;
+}
+.comment-header-alert{
+	@extend .pull-right;
+	margin-right:10px;
+}
+.comment-header-search{
+	@extend .pull-right;
+}
 .comment-badge{
 	@extend .badge;
 	color: #ffff;
  	background-color: #03A9F4;	
+}
+.comment-badge-alert{
+	@extend .badge;
+	color: #ffff;
+ 	background-color: #F44336;	
 }
 .comment-list{}
 .comment{

@@ -5,8 +5,12 @@ var socket = io.connect('http://localhost:3000');
 
 var CommentList = require('./CommentList-react');
 var CommentForm = require('./CommentForm-react');
-var SearchBar = require('./SearchBar-react');
-
+var HeaderBar = require('./HeaderBar-react');
+function sortByDate(comments){
+  return comments.sort(function(a,b) { 
+    return new Date(b.created).getTime() - new Date(a.created).getTime() 
+  });
+}
 var CommentApp = React.createClass({
   loadCommentsFromServer: function() {
     request
@@ -21,39 +25,52 @@ var CommentApp = React.createClass({
   handleCommentSubmit: function(comment) {
     socket.emit('comment sent', comment) ;
   },
-  handleSearchInput: function(searchText) {console.log('Box',searchText);
+  handleSearchInput: function(searchText) {
     this.setState({
       searchText: searchText
     });
+  },
+  handleDataAlert: function() {
+        var alertData = this.state.alertData;
+        var comments = this.state.data;
+        this.setState({data: sortByDate(comments.concat(alertData))});
+        this.state.alertData = [];
   },
   getInitialState: function() {
     return {
       data: [],
       searchText: '',
+      alertData:[]
     };
   },
   componentDidMount: function() {
     this.loadCommentsFromServer();
-    socket.on('comment added', function(comment){
+    socket.on('comment added socket', function(comment){
         var comments = this.state.data;
-        this.setState({data: comments.concat([comment])});
-    }.bind(this)) ;
+        this.setState({data: sortByDate(comments.concat([comment]))});
+    }.bind(this));
+
      socket.on('comment error', function(err){
        //do something
-    }.bind(this)) ;
+    }.bind(this));
+
+    socket.on('comment added other', function(comment){
+        var alertData = this.state.alertData;
+        this.setState({alertData: alertData.concat([comment])});
+    }.bind(this));
+    
   },
   render: function() {
     return (
       <div className="container">
-        <div className="comment-header">
-          <div className="pull-left">
-            <p>Comments for page {this.props.pageUrl} <span className="comment-badge">{this.state.data.length}</span></p>
-          </div>
-          <div className="pull-right">
-            <SearchBar  searchText={this.state.searchText} onSearchInput={this.handleSearchInput} />
-          </div>
-        </div>
-  	 <CommentList data={this.state.data}  searchText={this.state.searchText}  />
+        <HeaderBar 
+          pageUrl={this.props.pageUrl} 
+          data={this.state.data} 
+          alertData={this.state.alertData} 
+          searchText={this.state.searchText} 
+          handleSearchInput={this.handleSearchInput} 
+          handleDataAlert={this.handleDataAlert} />
+  	  <CommentList data={this.state.data}  searchText={this.state.searchText}  />
         <CommentForm commentUrl={this.props.pageUrl}  onCommentSubmit={this.handleCommentSubmit} />
 	</div>
     );

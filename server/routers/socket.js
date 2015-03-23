@@ -16,7 +16,8 @@ module.exports = function(io){
 	      			if (err) {
 	        				return io.emit('comment error',err);
 	      			}
-	      			io.emit('comment added',comment);
+	      			socket.emit('comment added socket', comment);
+	      			socket.broadcast.emit('comment added other', comment);
       			});
 		});
 	};

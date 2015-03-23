@@ -1,6 +1,6 @@
 var React = require('react');
 
-var SearchBar = React.createClass({
+var SearchInput = React.createClass({
     handleChange: function() {
         this.props.onSearchInput(
             this.refs.searchInput.getDOMNode().value
@@ -26,4 +26,4 @@ var SearchBar = React.createClass({
     }
 });
 
-module.exports = SearchBar;
+module.exports = SearchInput;
