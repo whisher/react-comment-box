@@ -1,0 +1,14 @@
+{
+    // JSHint Default Configuration File (as on JSHint website)
+    // See http://jshint.com/docs/ for more details
+
+    "maxerr"        : 50,       // {int} Maximum error before stopping
+
+    "strict"        : true,     // true: Requires all functions run in ES5 Strict Mode
+
+    "esnext"        : true,
+
+    "globalstrict"  : true,     // true: Allow global "use strict" (also enables 'strict')
+
+    "globals"       : { require }        // additional predefined global variables
+}
