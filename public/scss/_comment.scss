@@ -62,6 +62,13 @@
   &-date {
     float: right;
   }
+
+  &-create {
+    background: #fff;
+    border: 1px solid $gray-lighter;
+    margin-top: $line-height;
+    padding: $line-height/2 $line-height/2 0;
+  }
 }
 
 .comment-form-search {
