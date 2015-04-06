@@ -8,7 +8,8 @@ module.exports = gulp.task('default', function() {
                 'clean',
                 ['index',  'fonts', 'assets'],
                 ['scss'],
-                ['scripts']
+                ['scripts'],
+                ['watch']
        );
     });
 

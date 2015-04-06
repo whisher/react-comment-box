@@ -1,5 +1,6 @@
-.form-comment{}
-.comment-header{
+.form-comment {}
+
+.comment-header {
 	min-height: $navbar-height;
 	background-color:#727272;
 	line-height:$navbar-height;
@@ -7,43 +8,70 @@
 	margin-bottom:20px;
 	color:#ffffff;
 }
-.comment-header-info{
+
+.comment-header-info {
 	@extend .pull-left;
 }
-.comment-header-alert{
+
+.comment-header-alert {
 	@extend .pull-right;
 	margin-right:10px;
 }
-.comment-header-search{
+
+.comment-header-search {
 	@extend .pull-right;
 }
-.comment-badge{
+
+.comment-badge {
 	@extend .badge;
 	color: #ffff;
- 	background-color: #03A9F4;	
+ 	background-color: #03A9F4;
 }
-.comment-badge-alert{
+
+.comment-badge-alert {
 	@extend .badge;
 	color: #ffff;
- 	background-color: #F44336;	
+ 	background-color: #F44336;
 }
-.comment-list{}
-.comment{
-	@extend .well;
-  	@extend .clearfix;
+
+.comment-list {
+
+
 }
-.comment-form-search{
+.comment {
+  background: #fff;
+  border: 1px solid $gray-lighter;
+  margin-bottom: $line-height/4;
+
+  &-text {
+    padding: $line-height/2;
+  }
+
+  &-meta {
+    @include clearfix();
+    padding: $line-height/4 $line-height/2;
+    color: $gray-light;
+    font-size: $font-size-small;
+  }
+
+  &-author {
+    font-style: italic;
+    float: left;
+  }
+
+  &-date {
+    float: right;
+  }
+
+  &-create {
+    background: #fff;
+    border: 1px solid $gray-lighter;
+    margin-top: $line-height;
+    padding: $line-height/2 $line-height/2 0;
+  }
+}
+
+.comment-form-search {
 	margin-top:7px;
 }
-.comment-date{
-	width:100px;
-	float:right;
-	background-color:#0288D1;
-	color:#FFFFFF;
-	text-align:center;
-	padding: 3px 0;
-}
-.comment-author{}
-.comment-text{
-  
-}
+

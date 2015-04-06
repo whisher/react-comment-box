@@ -27,9 +27,13 @@ var config = {
             }
         }
     },
-    filenames:{ 
+    filenames:{
         styles: 'bundle.css',
         app: 'app.js'
+    },
+    watch: {
+      src: 'public/**/*.*',
+      tasks: ['scripts', 'scss']
     }
 };
 
