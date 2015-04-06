@@ -12,8 +12,7 @@
     "url": "git@github.com:whisher/react-comment-box.git"
   },
   "scripts": {
-    "start": "node server.js",
-    "gulp": "gulp"
+    "start": "node server.js"
   },
   "license": "Apache License",
   "dependencies": {
